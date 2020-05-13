@@ -25,6 +25,8 @@ with open('serve_left_661frame2P.pickle','rb') as file:
     datalist8=pickle.load(file)
 with open('serve_left_block_right_new_1148frame.pickle','rb') as file:
     datalist9=pickle.load(file)
+with open('serve_right_block_right_new_1482frame.pickle','rb') as file:
+    datalist10=pickle.load(file)
 frame=[]
 ball=[]
 ball_speed=[]
@@ -56,7 +58,7 @@ for j in range(0,len(datalist2)-150):
     command_1P.append(datalist2[i]['command_1P'])
     command_2P.append(datalist2[i]['command_2P'])
 
-for j in range(0,len(datalist3)-100):
+for j in range(0,len(datalist3)-50):
     i=j%len(datalist3)
     frame.append(datalist3[i]['frame'])
     ball.append(datalist3[i]['ball'])
@@ -67,7 +69,7 @@ for j in range(0,len(datalist3)-100):
     command_1P.append(datalist3[i]['command_1P'])
     command_2P.append(datalist3[i]['command_2P'])
 
-for j in range(0,len(datalist4)-100):
+for j in range(0,len(datalist4)-50):
     i=j%len(datalist4)
     frame.append(datalist4[i]['frame'])
     ball.append(datalist4[i]['ball'])
@@ -78,7 +80,7 @@ for j in range(0,len(datalist4)-100):
     command_1P.append(datalist4[i]['command_1P'])
     command_2P.append(datalist4[i]['command_2P'])
 
-for j in range(0,len(datalist5)-1):
+for j in range(0,len(datalist5)-50):
     i=j%len(datalist5)
     frame.append(datalist5[i]['frame'])
     ball.append(datalist5[i]['ball'])
@@ -122,7 +124,7 @@ for j in range(0,len(datalist8)-100):
     command_1P.append(datalist8[i]['command_1P'])
     command_2P.append(datalist8[i]['command_2P'])
 
-for j in range(0,len(datalist9)-1):
+for j in range(0,len(datalist9)-50):
     i=j%len(datalist9)
     frame.append(datalist9[i]['frame'])
     ball.append(datalist9[i]['ball'])
@@ -132,7 +134,18 @@ for j in range(0,len(datalist9)-1):
     platform_2P.append(datalist9[i]['platform_2P'])
     command_1P.append(datalist9[i]['command_1P'])
     command_2P.append(datalist9[i]['command_2P'])
-
+"""
+for j in range(0,len(datalist10)-100):
+    i=j%len(datalist10)
+    frame.append(datalist10[i]['frame'])
+    ball.append(datalist10[i]['ball'])
+    ball_speed.append(datalist10[i]['ball_speed'])
+    blocker.append(datalist10[i]['blocker'])
+    platform_1P.append(datalist10[i]['platform_1P'])
+    platform_2P.append(datalist10[i]['platform_2P'])
+    command_1P.append(datalist10[i]['command_1P'])
+    command_2P.append(datalist10[i]['command_2P'])
+"""
 
 #preprocessing    
 import numpy as np
