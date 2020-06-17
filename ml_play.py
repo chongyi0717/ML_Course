@@ -80,13 +80,14 @@ class MLPlay:
             else:
                 if (2 not in grid): # Check forward 
                     # Back to lane center
-                    
+                    """
                     if self.car_pos[0] > self.lanes[self.car_lane]:
                         return ["SPEED", "MOVE_LEFT"]
                     elif self.car_pos[0 ] < self.lanes[self.car_lane]:
                         return ["SPEED", "MOVE_RIGHT"]
-                    else :                        
-                        return ["SPEED"]
+                    else :
+                    """
+                     return ["SPEED"]
                 else:
                     if (5 in grid): # NEED to BRAKE
                         if (6 not in grid) and (9 not in grid): # turn right
