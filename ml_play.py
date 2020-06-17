@@ -33,7 +33,7 @@ class MLPlay:
                 grid.add(1)
                 grid.add(4)
                 grid.add(7)
-            elif self.car_pos[0] >= 565: # right bound
+            elif self.car_pos[0] >= 570: # right bound
                 grid.add(3)
                 grid.add(6)
                 grid.add(9)
@@ -45,11 +45,14 @@ class MLPlay:
                     if x <= 40 and x >= -40 :      
                         if y > 0 and y < 300:
                             grid.add(2)
+                            
                             if y < 200:
                                 speed_ahead = car["velocity"]
                                 grid.add(5) 
-                        elif y < 0 and y > -200:
+                                
+                        elif y < 0:
                             grid.add(8)
+                            
                     if x > -100 and x < -40 :
                         if y > 80 and y < 250:
                             grid.add(3)
@@ -57,6 +60,7 @@ class MLPlay:
                             grid.add(9)
                         elif y < 80 and y > -80:
                             grid.add(6)
+                        
                     if x < 100 and x > 40:
                         if y > 80 and y < 250:
                             grid.add(1)
@@ -64,6 +68,8 @@ class MLPlay:
                             grid.add(7)
                         elif y < 80 and y > -80:
                             grid.add(4)
+                        
+                            
             return move(grid= grid, speed_ahead = speed_ahead)
             
         def move(grid, speed_ahead): 
@@ -74,28 +80,33 @@ class MLPlay:
             else:
                 if (2 not in grid): # Check forward 
                     # Back to lane center
+                    
                     if self.car_pos[0] > self.lanes[self.car_lane]:
                         return ["SPEED", "MOVE_LEFT"]
                     elif self.car_pos[0 ] < self.lanes[self.car_lane]:
                         return ["SPEED", "MOVE_RIGHT"]
-                    else :return ["SPEED"]
+                    else :                        
+                        return ["SPEED"]
                 else:
                     if (5 in grid): # NEED to BRAKE
-                        if (4 not in grid) and (7 not in grid): # turn left 
-                            if self.car_vel < speed_ahead:
-                                return ["SPEED", "MOVE_LEFT"]
-                            else:
-                                return ["BRAKE", "MOVE_LEFT"]
-                        elif (6 not in grid) and (9 not in grid): # turn right
+                        if (6 not in grid) and (9 not in grid): # turn right
                             if self.car_vel < speed_ahead:
                                 return ["SPEED", "MOVE_RIGHT"]
                             else:
                                 return ["BRAKE", "MOVE_RIGHT"]
+                        elif (4 not in grid) and (7 not in grid): # turn left 
+                            if self.car_vel < speed_ahead:
+                                return ["SPEED", "MOVE_LEFT"]
+                            else:
+                                return ["BRAKE", "MOVE_LEFT"]
+                        
                         else : 
                             if self.car_vel < speed_ahead:  # BRAKE
                                 return ["SPEED"]
+                            
                             else:
                                 return ["BRAKE"]
+                                
                     if (self.car_pos[0] < 60 ):
                         return ["SPEED", "MOVE_RIGHT"]
                     if (1 not in grid) and (4 not in grid) and (7 not in grid): # turn left 
@@ -106,11 +117,12 @@ class MLPlay:
                         return ["SPEED", "MOVE_LEFT"]
                     if (3 not in grid) and (6 not in grid): # turn right
                         return ["SPEED", "MOVE_RIGHT"]
+                    
                     if (4 not in grid) and (7 not in grid): # turn left 
                         return ["MOVE_LEFT"]    
                     if (6 not in grid) and (9 not in grid): # turn right
                         return ["MOVE_RIGHT"]
-                                
+                              
                     
         if len(scene_info[self.player]) != 0:
             self.car_pos = scene_info[self.player]
