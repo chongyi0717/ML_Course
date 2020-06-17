@@ -87,7 +87,7 @@ class MLPlay:
                         return ["SPEED", "MOVE_RIGHT"]
                     else :
                     """
-                     return ["SPEED"]
+                    return ["SPEED"]
                 else:
                     if (5 in grid): # NEED to BRAKE
                         if (6 not in grid) and (9 not in grid): # turn right
